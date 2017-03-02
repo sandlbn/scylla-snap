@@ -9,6 +9,11 @@ $git clone https://github.com/sandlbn/scylla-snap.git
 $cd scylla-snap
 ```
 
+Install epel repository and wget package
+```
+$sudo yum install -y epel-release wget
+```
+
 Configure ScyllaDB repo
 ```
 sudo wget -O /etc/yum.repos.d/scylla.repo http://downloads.scylladb.com/rpm/centos/scylla-1.6.repo
@@ -17,11 +22,6 @@ sudo wget -O /etc/yum.repos.d/scylla.repo http://downloads.scylladb.com/rpm/cent
 Because ABRT conflict with Scylla coredump configuration. Remove it before installing Scylla: 
 ```
 $sudo yum remove -y abrt
-```
-
-Install epel repository and wget package
-```
-$sudo yum install -y epel-release wget
 ```
 
 Install scylladb
@@ -37,11 +37,7 @@ $sudo scylla_setup
 ##Blueflood configuration
 Create data structure for blueflood 
 ```
-$cqlsh 127.0.0.1 -f ./load/load.cdl
-```
-Install java
-```
-$sudo yum install -y openjdk
+$cqlsh 127.0.0.1 -f load/load.cdl
 ```
 
 You are ready now to run blueflood 
