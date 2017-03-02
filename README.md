@@ -21,29 +21,43 @@ sudo wget -O /etc/yum.repos.d/scylla.repo http://downloads.scylladb.com/rpm/cent
 
 Because ABRT conflict with Scylla coredump configuration. Remove it before installing Scylla: 
 ```
-$sudo yum remove -y abrt
+sudo yum remove -y abrt
 ```
 
 Install scylladb
 ```
-$sudo yum install -y scylla
+sudo yum install -y scylla
 ```
 
 For additional configuration and tweaks you can run scylla configuration tool:
 ```
-$sudo scylla_setup
+sudo scylla_setup
+```
+##Elastic search configuration
+
+Import gpg key for elasticsearch repository
+```
+sudo rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch
+```
+
+Install Elasticsearch service
+```
+sudo cp config/elasticsearch.repo /etc/yum.repos.d/elasticsearch.repo
+sudo yum install elasticsearch
+sudo chkconfig --add elasticsearch
+sudo service elasticsearch start
 ```
 
 ##Blueflood configuration
 Create data structure for blueflood 
 ```
-$cqlsh 127.0.0.1 -f load/load.cdl
+cqlsh 127.0.0.1 -f load/load.cdl
 ```
 
 You are ready now to run blueflood 
 
 ```
-$./bin/blueflood-start.sh
+./bin/blueflood-start.sh
 ```
 
 ##Snap configuration
