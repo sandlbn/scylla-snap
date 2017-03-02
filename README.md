@@ -50,10 +50,28 @@ You are ready now to run blueflood
 $./bin/blueflood-start.sh
 ```
 
+##Snap configuration
 Let's configure snap
 ```
 curl -s https://packagecloud.io/install/repositories/intelsdi-x/snap/script.rpm.sh | sudo bash
 sudo yum install -y snap-telemetry
 ```
 
+Download plugins
+```
+sudo wget https://raw.githubusercontent.com/sandlbn/dot/master/bin/snap-plugin-publisher-blueflood -O /opt/snap/plugins/snap-plugin-publisher-blueflood
+sudo wget https://github.com/intelsdi-x/snap-plugin-collector-psutil/releases/download/8/snap-plugin-collector-psutil_linux_x86_64 -O /opt/snap/plugins/snap-plugin-collector-psutil
+sudo chmod +x /opt/snap/plugins/snap-plugin-publisher-blueflood
+sudo chmod +x /opt/snap/plugins/snap-plugin-collector-psutil
+/opt/snap/bin/snapctl plugin load /opt/snap/plugins/snap-plugin-publisher-blueflood
+/opt/snap/bin/snapctl plugin load /opt/snap/plugins/snap-plugin-collector-psutil
+```
+
+Start a task
+
+```
+
+/opt/snap/bin/snapctl task create -t tasks/blueflood.yaml 
+
+```
 
