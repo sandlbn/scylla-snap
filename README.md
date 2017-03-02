@@ -4,14 +4,14 @@
 
 Clone the scylla-snap repository
 ```
-$git clone https://github.com/sandlbn/scylla-snap.git 
+git clone https://github.com/sandlbn/scylla-snap.git 
 
-$cd scylla-snap
+cd scylla-snap
 ```
 
 Install epel repository and wget package
 ```
-$sudo yum install -y epel-release wget
+sudo yum install -y epel-release wget
 ```
 
 Configure ScyllaDB repo
